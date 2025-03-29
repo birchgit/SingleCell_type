@@ -89,7 +89,7 @@ Visualize results with plots/tables for easy comparison.
 Interpret trade-offs between accuracy and computational efficiency.
 
 7. Tools & Libraries
-Data Processing: Pandas, Scanpy
+Data Processing: Pandas, Scanpy, etc. 
 Version Control: Git
-Machine Learning Frameworks: TensorFlow, PyTorch
+Machine Learning Frameworks: XGBoost, PyTorch
 
