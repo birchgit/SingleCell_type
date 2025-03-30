@@ -1,5 +1,9 @@
 ##  Project Overview
-Short summary of what you're doing (e.g., comparing DNN vs XGBoost for cell type classification from scRNA-seq data)
+
+This project compares **deep learning (DNN)** and **XGBoost** models for classifying cell types using **single-cell RNA sequencing (scRNA-seq)** data. We evaluate model performance on datasets of varying sizes (50K, 60K cells), using three preprocessing strategies:  
+- **Raw features**  
+- **PCA-reduced features**  
+- **Randomly undersampled (RUS) features**
 
 ## Workflow Summary
 1. Data Selection  
@@ -10,10 +14,6 @@ Short summary of what you're doing (e.g., comparing DNN vs XGBoost for cell type
 6. Results & Visualization
 
 
-This project compares **deep learning (DNN)** and **XGBoost** models for classifying cell types using **single-cell RNA sequencing (scRNA-seq)** data. We evaluate model performance on datasets of varying sizes (50K, 60K cells), using three preprocessing strategies:  
-- **Raw features**  
-- **PCA-reduced features**  
-- **Randomly undersampled (RUS) features**
 
 ---
 
