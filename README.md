@@ -3,13 +3,11 @@ Short summary of what you're doing (e.g., comparing DNN vs XGBoost for cell type
 
 ## Workflow Summary
 1. Data Selection  
-2. Preprocessing 
-3. Data Reduction 
-4. Data Splitting  
-5. Model Training (DNN, XGBoost)  
-6. Evaluation & Metrics  
-7. Result Comparison  
-8. Visualization & Reporting
+2. Preprocessing & Data Reduction 
+3. Data Splitting  
+4. Model Training (DNN, XGBoost)  
+5. Evaluation & Metrics  
+6. Results & Visualization
 
 
 This project compares **deep learning (DNN)** and **XGBoost** models for classifying cell types using **single-cell RNA sequencing (scRNA-seq)** data. We evaluate model performance on datasets of varying sizes (50K, 60K cells), using three preprocessing strategies:  
@@ -19,13 +17,13 @@ This project compares **deep learning (DNN)** and **XGBoost** models for classif
 
 ---
 
-## 📊 Project Workflow
+## Project Workflow
 
-### 1. 🔍 Data Selection & Collection
+### 1. Data Selection 
 - Selected two large scRNA-seq datasets (50K+ cells each) from the [Cellxgene](https://cellxgene.cziscience.com/) database.
 - Chose datasets with a **diverse range of cell types** and **class imbalance** to simulate realistic classification challenges.
 
-### 2.  Data Preprocessing and Reduction
+### 2. Preprocessing and Data Reduction
 - **Normalization**: Applied log normalization and scaling.
 - **Filtering**: Removed low-quality cells with:
   - High mitochondrial gene expression
@@ -53,13 +51,13 @@ Each preprocessing strategy (Raw, PCA, RUS) was used to create distinct input da
   - Confusion Matrix
 - Benchmarked computational performance for each model-dataset combination.
 
-### 6. 📈 Results & Visualization
+### 6. Results & Visualization
 - Performance metrics visualized using matplotlib.
 - Appendix figures demonstrate model scalability and resource consumption.
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```bash
 .
