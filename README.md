@@ -1,95 +1,76 @@
-Project Workflow: Optimizing Cell Type Classification Using Deep Learning and Traditional Models
+##  Project Overview
+Short summary of what you're doing (e.g., comparing DNN vs XGBoost for cell type classification from scRNA-seq data)
+
+## Workflow Summary
+1. Data Selection  
+2. Preprocessing 
+3. Data Reduction 
+4. Data Splitting  
+5. Model Training (DNN, XGBoost)  
+6. Evaluation & Metrics  
+7. Result Comparison  
+8. Visualization & Reporting
 
 
-1️ Data Selection & Preprocessing 
+This project compares **deep learning (DNN)** and **XGBoost** models for classifying cell types using **single-cell RNA sequencing (scRNA-seq)** data. We evaluate model performance on datasets of varying sizes (50K, 60K cells), using three preprocessing strategies:  
+- **Raw features**  
+- **PCA-reduced features**  
+- **Randomly undersampled (RUS) features**
+
+---
+
+## 📊 Project Workflow
+
+### 1. 🔍 Data Selection & Collection
+- Selected two large scRNA-seq datasets (50K+ cells each) from the [Cellxgene](https://cellxgene.cziscience.com/) database.
+- Chose datasets with a **diverse range of cell types** and **class imbalance** to simulate realistic classification challenges.
+
+### 2.  Data Preprocessing and Reduction
+- **Normalization**: Applied log normalization and scaling.
+- **Filtering**: Removed low-quality cells with:
+  - High mitochondrial gene expression
+  - Low gene expression 
+- **Annotation**: Annotated cell types for supervised learning.
+- **PCA (Principal Component Analysis)** was used to reduce the number of features from thousands of genes to a lower-dimensional representation, capturing the most variance.
+- **Random Undersampling (RUS)** was applied to reduce the number of majority class samples, addressing class imbalance while preserving minority cell types.
+
+Each preprocessing strategy (Raw, PCA, RUS) was used to create distinct input datasets for model evaluation.
 
 
-Data Collection
-Select two large scRNA-seq datasets (200,000+ cells each) from cellxgene database.
+### 3. Data Splitting
+- Split ratio: **80% training** / **20% testing**.
 
-Make sure the datasets contain diverse cell types to allow robust classification.
+### 4. Model Training
+- Trained two types of models:
+  - Deep Neural Networks (DNN)
+  - XGBoost classifiers
+- Each model was trained on all 3 dataset versions (raw, PCA, RUS).
 
-Select datasets with imbalanced distributions of cell types (use cases where minority classes exist).
+### 5. Evaluation
+- Evaluated using:
+  - Accuracy
+  - F1 Score
+  - Confusion Matrix
+- Benchmarked computational performance for each model-dataset combination.
 
+### 6. 📈 Results & Visualization
+- Performance metrics visualized using matplotlib.
+- Appendix figures demonstrate model scalability and resource consumption.
 
-  2 Data Preprocessing
-Perform data cleaning: normalize gene expression values (log normalization, scaling).
-Perform data cleaning: filter out low-quality cells (e.g., those with excessive mitochondrial gene expression or too few expressed genes).
-Perform feature selection to reduce dimensionality if needed. 
+---
 
-Perform Feature selection:  gene filtering (if necessary).
-Annotate cell types  appropriately  
+## 📁 Repository Structure
 
-Prepare datasets for model training: 
-
-  3 Data Splitting 
-  
-  Sampling Strategy:
-Stratified Sampling: Ensure proportions of each cell type remain balanced.
-
-Split data into: Training: 80%, Test: 20%
-
- 4 Reducing data points 
-Reduce dataset size while preserving essential patterns.
-
-Stratified Sampling: Reduce dataset size while preserving the distribution of cell types. Preserve essential patterns.  Ensure proportions of each cell type remain balanced.
-Sampling Based on Cell Type Distribution: Ensure underrepresented cell types are not lost.
-Random Sampling: Compare results with naive downsampling.
-
-5 Model Implementation 
-
-A. Traditional Method: Gradient-Boosted Trees (XGBoost)
-Use XGBoost (XGBoost Docs). alternatives : LightGBM, or CatBoost.
-Input: Ensure stratified data splitting to keep class proportions.
-Optimize hyperparameters for the best performance.
-
-B . Deep Neural Network (DNN)
-Model Design 
-Choose an architecture suitable for classification (e.g., multi-layer perceptron, convolutional neural network, or transformer-based models).
-Implement in PyTorch.
-Tune key parameters:
-Dropout rate (prevents overfitting).
-Learning rate (controls step size of weight updates).
-Number of layers (determines depth of the model).
-Number of neurons per layer (controls model complexity).
-Regularization techniques (L1, L2 penalties to prevent overfitting).
-Hyperparameter Optimization
-
-
-6 Model Training & Monitoring
-
-Logging & Performance Tracking
-
-Training Process
-Epochs: One full pass over the entire dataset.
-Mini-Batches: Model trains in small batches to improve stability.
-Backpropagation: The model updates weights after each batch.
-
-
-Train both models on:
-Full dataset
-Reduced dataset
-
-Measure performance using:
-Classification Accuracy
-F1-score (especially important for imbalanced cell type distributions)
-Computational Cost (runtime, memory usage) 
-Analyze and Interpret Results
-
-Compare results to see how dataset reduction affects performance. 
-Compare performance metrics across models and dataset sizes.
-Identify trade-offs between accuracy and computational efficiency.
-Provide recommendations on how much dataset size can be reduced without significant loss of accuracy.
-
-Evaluate model performance using:
-Classification accuracy
-F1-score (important for imbalanced classes)
-Computational cost (runtime, memory usage).
-Visualize results with plots/tables for easy comparison.
-Interpret trade-offs between accuracy and computational efficiency.
-
-7. Tools & Libraries
-Data Processing: Pandas, Scanpy, etc. 
-Version Control: Git
-Machine Learning Frameworks: XGBoost, PyTorch
-
+```bash
+.
+├── notebooks/
+│   ├── DNN_50K_Raw.ipynb
+│   ├── DNN_50K_PCA.ipynb
+│   ├── DNN_50K_RUS.ipynb
+│   ├── DNN_60K_Raw.ipynb
+│   ├── DNN_60K_PCA.ipynb
+│   ├── DNN_60K_RUS.ipynb
+│   └── XGBoost.ipynb
+├── figures/
+│   └── appendix_figure_A_1.png
+├── README.md
